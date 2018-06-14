@@ -24,7 +24,7 @@ public class Browser {
     }
 
     private Browser() {
-        driver = FactoryBrowser.crear(FactoryBrowser.FIREFOX).create();
+        driver = FactoryBrowser.crear(FactoryBrowser.CHROME).create();
     }
 
     public void closeBrowser(){

@@ -1,1 +1,2 @@
-# AutomationExample
+# BasicAutomationExample
+basic example

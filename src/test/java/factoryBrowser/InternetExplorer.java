@@ -1,12 +1,29 @@
 package factoryBrowser;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class InternetExplorer implements IBrowser {
 
     @Override
     public WebDriver create() {
-        return new InternetExplorerDriver();
+        String PATH_PROJECT=new File(".").getAbsolutePath().replace(".","");
+        System.setProperty("java.net.preferIPv4Stack", "true");
+        System.setProperty("webdriver.ie.driver", PATH_PROJECT+"src\\test\\java\\drivers\\IEDriverServer.exe");
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("credentials_enable_service", false);
+        WebDriver driver = new InternetExplorerDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+
+        return driver;
     }
 }
