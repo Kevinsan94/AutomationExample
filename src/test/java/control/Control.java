@@ -1,6 +1,7 @@
 package control;
 
 import browserManager.Browser;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -22,6 +23,25 @@ public abstract class Control {
         wait.until(ExpectedConditions.elementToBeClickable(this.locator));
         this.myControl = Browser.getInstance().driver.findElement(this.locator);
 
+    }
+
+    public Boolean isDisplayed(){
+        try {
+            Browser.getInstance().driver.findElement(locator).isDisplayed();
+            return true;
+        } catch (Exception e){
+            return  false;
+        }
+    }
+
+    public String getTextValue(){
+        this.findControl();
+        return myControl.getText();
+    }
+
+    public String getTextValue(String attribute){
+        this.findControl();
+        return myControl.getAttribute(attribute);
     }
 
     public void click(){

@@ -11,9 +11,13 @@ public class LeftMenu {
     public TextBox projectNameTextBox;
     public Button addProjectButton;
 
+    public  Link logoutLink;
+
     public  LeftMenu(){
         addProjectLink = new Link(By.xpath("//*[@id=\"MainTable\"]/tbody/tr/td[1]/div[6]/div/table/tbody/tr/td[2]"));
         projectNameTextBox = new TextBox(By.id("NewProjNameInput"));
         addProjectButton = new Button(By.id("NewProjNameButton"));
+
+        logoutLink = new Link(By.id("ctl00_HeaderTopControl1_LinkButtonLogout"));
     }
 }
